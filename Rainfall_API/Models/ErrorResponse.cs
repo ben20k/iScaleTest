@@ -8,7 +8,7 @@ namespace Rainfall_API.Models
     /// An error object returned for failed requests
     /// </summary>
     [DataContract]
-    public partial class ErrorResponse
+    public partial class ErrorResponse: Response
     {
         /// <summary>
         /// Gets or Sets Message
@@ -23,6 +23,7 @@ namespace Rainfall_API.Models
 
         [DataMember(Name = "detail")]
         public List<ErrorDetail> Detail { get; set; }
+
 
         /// <summary>
         /// Returns the string presentation of the object

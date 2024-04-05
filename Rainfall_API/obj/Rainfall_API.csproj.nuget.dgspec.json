@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Repositories\\Rainfall_API\\Rainfall_API.csproj": {}
+    "C:\\Repositories\\testg\\Rainfall_API\\Rainfall_API.csproj": {}
   },
   "projects": {
-    "C:\\Repositories\\Rainfall_API\\Rainfall_API.csproj": {
+    "C:\\Repositories\\testg\\Rainfall_API\\Rainfall_API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Repositories\\Rainfall_API\\Rainfall_API.csproj",
+        "projectUniqueName": "C:\\Repositories\\testg\\Rainfall_API\\Rainfall_API.csproj",
         "projectName": "Rainfall_API",
-        "projectPath": "C:\\Repositories\\Rainfall_API\\Rainfall_API.csproj",
+        "projectPath": "C:\\Repositories\\testg\\Rainfall_API\\Rainfall_API.csproj",
         "packagesPath": "C:\\Users\\ben\\.nuget\\packages\\",
-        "outputPath": "C:\\Repositories\\Rainfall_API\\obj\\",
+        "outputPath": "C:\\Repositories\\testg\\Rainfall_API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\ben\\AppData\\Roaming\\NuGet\\NuGet.Config",

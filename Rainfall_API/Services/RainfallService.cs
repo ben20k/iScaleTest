@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Microsoft.AspNetCore.WebUtilities;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Rainfall_API.Models;
 using System.Net.Http.Headers;
@@ -17,7 +18,7 @@ namespace Rainfall_API.Services
             _httpClient.BaseAddress = new Uri(BaseUrl);
         }
 
-        public async Task<RainfallReadingResponse> GetRainfallData(string stationId, int limitCount)
+        public async Task<Response> GetRainfallData(string stationId, int limitCount)
         {
             try
             {
@@ -57,15 +58,24 @@ namespace Rainfall_API.Services
 
                     var rainfallReadingResponse = new RainfallReadingResponse();
                     rainfallReadingResponse.Readings = rainfallReadings;
+                    rainfallReadingResponse.StatusCode = (int)response.StatusCode;
 
                     return rainfallReadingResponse;
+
                 }
                 else
                 {
-                    // If request was not successful, throw an exception or handle the error accordingly
-                    response.EnsureSuccessStatusCode();
-                    return null; // Return default value or handle error as per requirement
+                    ErrorResponse errorResponse = new ErrorResponse();
+                    List<ErrorDetail> errorDetails = new List<ErrorDetail>();
+                    errorDetails.Add(new ErrorDetail() { Message = response.ReasonPhrase, PropertyName = "testProp" });
+
+                    errorResponse.Detail = errorDetails;
+                    errorResponse.StatusCode = (int)response.StatusCode;
+
+                    return errorResponse;
+
                 }
+
             }
             catch (Exception ex)
             {

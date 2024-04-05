@@ -8,7 +8,7 @@ namespace Rainfall_API.Models
     /// Details of a rainfall reading
     /// </summary>
     [DataContract]
-    public partial class RainfallReadingResponse
+    public partial class RainfallReadingResponse: Response
     {
         /// <summary>
         /// Gets or Sets Readings

@@ -36,15 +36,25 @@ namespace Rainfall_API.Controllers
         [ProducesResponseType(typeof(ErrorResponse), 500)]
         [HttpGet(Name = "GetRainfall")]
         [Route("/rainfall/id/{stationId}/readings")]
-        public async Task<ActionResult<RainfallReadingResponse>> GetRainfall(string stationId, [FromQuery] int count)
+        public async Task<ActionResult<Response>> GetRainfall(string stationId, [FromQuery] int count)
         {
             try
             {
                 // Call the GetRainfallData method of the injected RainfallService
                 var rainfall = await _rainfallService.GetRainfallData(stationId, count);
 
-                // Return the rainfall data as a ActionResult
+                if(rainfall != null)
+                {
+                    switch (rainfall.StatusCode) 
+                    {
+                        case 400:
+                            return NotFound(rainfall);
+                        default:
+                            return Ok(rainfall);
+                    };
+                }
                 return Ok(rainfall);
+                
             }
             catch (Exception ex)
             {
